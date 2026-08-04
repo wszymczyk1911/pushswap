@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 07:36:25 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/03 16:54:28 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/04 15:33:52 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	push_swap(t_counts **ops, char **argv, int start, int strategy)
 //	check_stack(&a);
 	assign_index(&a);
 	disorder = compute_disorder(&a);
-//        print_stack(&a);
+       print_stack(&a);
 	if (size <= 1)
 		return ;
 	if (strategy == 1 || (strategy == 0 && disorder < 0.2))
@@ -63,6 +63,8 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		return (0);
+	check_arg(argv, argc);
+	return (0);
 	strategy = 1;
 //	bench = 0;
 	start = 1;

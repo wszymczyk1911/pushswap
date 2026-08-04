@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_simple.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 11:13:45 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/03 16:54:57 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/04 12:59:24 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	sort_simple(t_stack **a, t_stack **b, t_counts **ops, int size)
 	if (size <= 3)
 	{
 		sort_little(a, ops, size);
+		print_stack(a);
 		return ;
 	}
 	while (i > 0)//push b dopoki nie zostana tylko 3 nody w stack a
@@ -60,9 +61,9 @@ void	sort_simple(t_stack **a, t_stack **b, t_counts **ops, int size)
 		ft_pb(a, b, ops);
 		i--;
 	}
-//	print_stack(a);
+	print_stack(a);
 	sort_three(a, ops);
-//	print_stack(a);
+	print_stack(a);
 	while (*b != NULL)
 	{
 		idx = find_bigger(*a, *b);
@@ -71,11 +72,11 @@ void	sort_simple(t_stack **a, t_stack **b, t_counts **ops, int size)
 		while ((*a)->index != idx)
 			ft_ra(a, ops, 0);
 		ft_pa(a, b, ops);
-//		print_stack(a);
+		print_stack(a);
 	}
 	idx = find_smallest(*a);
 	while ((*a)->index != idx)
 		ft_ra(a, ops, 0);
-//	print_stack(a);
+	print_stack(a);
 	ft_printf("total operations: %d\n", (*ops)->total);
 }

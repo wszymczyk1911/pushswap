@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 15:03:01 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/03 16:45:35 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/04 12:56:43 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	sort_three(t_stack **a, t_counts **ops)
 		ft_ra(a, ops, 0);
 	else if (current->next->index == idx)
 		ft_rra(a, ops, 0);
+	current = *a;
 	if (current->index > current->next->index)
 		ft_sa(a, ops, 0);
 }

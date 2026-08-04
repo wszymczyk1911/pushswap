@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wikszymc <wikszymc@student.42warsaw.p      +#+  +:+       +#+        */
+/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:00:49 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/03 14:45:48 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/04 15:14:22 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
+# define ADAPTIVE 0
+# define SIMPLE 1
+# define MEDIUM 2
+# define COMPLEX 3
 # include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
@@ -24,6 +27,15 @@ typedef struct s_stack
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;
+
+typedef struct s_check_arg
+{
+	char	**args;
+	int		flag;
+	double	disorder;
+	int 	bench;
+}	t_check_arg;
+
 
 typedef struct s_counts
 {
@@ -73,4 +85,5 @@ void    ft_rrb(t_stack **b, t_counts **ops, int rrr);
 void    ft_rrr(t_stack **a, t_stack **b, t_counts **ops);
 
 void    print_stack(t_stack **a);
+t_check_arg	*check_arg(char **argv, int argc);
 #endif
