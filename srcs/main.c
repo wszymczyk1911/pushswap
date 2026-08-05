@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 07:36:25 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/04 15:33:52 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/05 21:15:29 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,11 @@ int	main(int argc, char **argv)
 	int			start;
 	int			strategy;
 //	int			bench;
-
+	
 	if (argc == 1)
 		return (0);
-	check_arg(argv, argc);
+	t_check_arg *test = check_arg(argv, argc);
+	printf("nowy string - %s", test->str);
 	return (0);
 	strategy = 1;
 //	bench = 0;

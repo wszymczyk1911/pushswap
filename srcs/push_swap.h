@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:00:49 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/04 15:14:22 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/05 20:47:58 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_stack
 
 typedef struct s_check_arg
 {
-	char	**args;
+	char	*str;
 	int		flag;
 	double	disorder;
 	int 	bench;

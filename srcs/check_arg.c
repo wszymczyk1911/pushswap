@@ -6,13 +6,51 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/04 13:28:33 by djuja             #+#    #+#             */
-/*   Updated: 2026/08/04 16:11:57 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/05 22:25:59 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 #include <stdio.h>
+
+int check_invalid_arg(char *argv)
+{
+	int i;
+
+	i = 0;
+	while(argv[i])
+	{
+		if ((argv[i] >= '0' && argv[i] <= '9') || argv[i] == '-' || argv[i] == ' ')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+t_check_arg *make_string_of_numbers(char *argv, t_check_arg *conditions)
+{
+	char *sep;
+	char *str;
+
+	str = NULL;
+	sep = ft_strdup(" ");
+	if (check_invalid_arg(argv) == 0)
+	{
+			ft_putstr_fd("Error\n", 2);
+			free(conditions);
+			exit (1);
+	}
+	else
+	{	
+		conditions->str = ft_strjoin(conditions->str, sep);
+		conditions->str = ft_strjoin(conditions->str, argv);
+	}
+	return(conditions);
+}
+
+
 t_check_arg	*check_arg(char **argv, int argc)
 {
 	t_check_arg *conditions;
@@ -25,6 +63,7 @@ t_check_arg	*check_arg(char **argv, int argc)
 	i = 1;
 	conditions->bench = 0;
 	number_of_flags = 0;
+	conditions->str = NULL;
 	while (i < argc)
 	{
 		if (ft_strncmp(argv[i], "--simple", ft_strlen(argv[i])) == 0)
@@ -50,6 +89,7 @@ t_check_arg	*check_arg(char **argv, int argc)
 			conditions->bench = 1;
 			printf("bench: %d\n", conditions->bench);
 		}
+		else if (make_string_of_numbers(argv[i], conditions));
 		else
 		{
 			ft_putstr_fd("Error\n", 2);
