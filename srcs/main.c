@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 07:36:25 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/07 17:13:09 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/11 18:37:25 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void	print_stack(t_stack **a)
 //	ft_printf("disorder: %d", disorder);
 }
 
-double	push_swap(char **argv, t_counts **ops, int start, int strategy)
+double	push_swap(t_counts **ops, t_check_arg **input)
 {
 	t_stack	*a;
 	t_stack	*b;
 	double	disorder;
 	int		size;
 
-	size = build_stack(&a, argv, start);
+	size = build_stack(&a, input);
 	if (!a)
 		return (0);
 	b = NULL;
@@ -42,9 +42,9 @@ double	push_swap(char **argv, t_counts **ops, int start, int strategy)
 	disorder = compute_disorder(&a);
 	if (size <= 1)
 		return (0);
-	if (strategy == 1)
-		sort_simple(&a, &b, ops, size);
-	else if (strategy == 2)
+	if ((*input)->strategy == 1)
+		test_sort_simple(&a, &b, ops, size);
+	else if ((*input)->strategy == 2)
 		sort_medium(&a, &b, ops, size);
 //	else if (strategy == 3)
 //		sort_complex(&a, &b, ops, size);
@@ -57,20 +57,15 @@ double	push_swap(char **argv, t_counts **ops, int start, int strategy)
 int	main(int argc, char **argv)
 {
 	t_counts	*ops;
-	int		start;
-	int		strategy;
-	int		bench;
+	t_check_arg *input;
 	double	disorder;
 
-	strategy = 2;
-	bench = 1;
 	if (argc == 1)
 		return (0);
-	start = 1;
+	input = check_arg(argv, argc);
 	create_ops(&ops);
-//	start = check_flags(argv, &strategy, &bench);
-	disorder = push_swap(argv, &ops, start, strategy);
-	if (bench == 1)
-		print_bench(disorder, strategy, ops);
+	disorder = push_swap(&ops, &input);
+	if (input->bench == 1)
+		print_bench(disorder, input->strategy, ops);
 //	free_counts(&ops);
 }

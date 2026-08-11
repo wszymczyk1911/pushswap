@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wikszymc <wikszymc@student.42warsaw.p      +#+  +:+       +#+        */
+/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:00:49 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/07 12:16:15 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/11 18:37:32 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct s_check_arg
+{
+	char	*str;
+	int		strategy;
+	double	disorder;
+	int 	bench;
+}	t_check_arg;
+
 typedef struct s_counts
 {
 	int	sa;
@@ -45,11 +53,11 @@ typedef struct s_counts
 	int	rrr;
 	int	total;
 }	t_counts;
+t_check_arg	*check_arg(char **argv, int argc);
+double    push_swap(t_counts **ops, t_check_arg **input);
 
-double    push_swap(char **argv, t_counts **ops, int start, int strategy);
-
-int		build_stack(t_stack **a, char **argv, int start);
-char    **join_and_split(char **argv, int start);
+int		build_stack(t_stack **a, t_check_arg **input);
+char    **join_and_split(t_check_arg **input);
 t_stack *ft_lstnew_addlast(t_stack **lst, t_stack *last, long long value);
 
 void    assign_index(t_stack **stack);
@@ -82,4 +90,6 @@ void    ft_rrb(t_stack **b, t_counts **ops, int rrr);
 void    ft_rrr(t_stack **a, t_stack **b, t_counts **ops);
 
 void    print_stack(t_stack **a);
+void	test_sort_simple(t_stack **a, t_stack **b, t_counts **ops, int size);
+
 #endif

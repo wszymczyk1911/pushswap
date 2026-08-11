@@ -1,29 +1,18 @@
 #include "push_swap.h"
 #include "libft.h"
 
-char    **join_and_split(char **argv, int start)
+char    **join_and_split(t_check_arg **input)
 {
-        char    *space;
-        char    *str;
         char    **arr;
 
-        str = NULL;
         arr = NULL;
-        space = ft_strdup(" ");
-	if (!space)
-		return (NULL);
-        while (argv[start])
-        {
-                str = ft_strjoin(str, space);
-                str = ft_strjoin(str, argv[start]);
-                start++;
-        }
-	free(space);
-        arr = ft_split(str, ' ');
+    
+        arr = ft_split((*input)->str, ' ');
         if (!arr)
-                return (free(str), NULL);
-	free(str);
-        return (arr);
+                return (free((*input)->str), NULL);
+	free((*input)->str);
+	(*input)->str = NULL;
+    return (arr);
 }
 
 t_stack *ft_lstnew_addlast(t_stack **lst, t_stack *last, long long value)
@@ -44,7 +33,7 @@ t_stack *ft_lstnew_addlast(t_stack **lst, t_stack *last, long long value)
         return (new_node);
 }
 
-int	build_stack(t_stack **a, char **argv, int start)
+int	build_stack(t_stack **a, t_check_arg **input)
 {
 	t_stack	*last;
 	char	**arr;
@@ -54,7 +43,7 @@ int	build_stack(t_stack **a, char **argv, int start)
 	size = 0;
 	last = NULL;
 	i = 0;
-	arr = join_and_split(argv, start);
+	arr = join_and_split(input);
 	if (!arr)
 		return (0);
 	while (arr[i])
