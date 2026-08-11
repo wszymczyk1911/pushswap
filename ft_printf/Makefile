@@ -3,7 +3,7 @@ NAME = ft_printf
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
-SRCS = ft_printf.c ft_printf_utils.c
+SRCS = ft_printf.c ft_printf_utils.c ft_printf_utils2.c
 
 OBJS = $(SRCS:.c=.o)
 

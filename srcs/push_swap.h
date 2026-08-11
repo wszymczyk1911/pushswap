@@ -3,39 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
+/*   By: wikszymc <wikszymc@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:00:49 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/05 20:47:58 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/07 12:16:15 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# define ADAPTIVE 0
-# define SIMPLE 1
-# define MEDIUM 2
-# define COMPLEX 3
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <limits.h>
 
+# define ADAPTIVE 0
+# define SIMPLE 1
+# define MEDIUM 2
+# define COMPLEX 3
+
 typedef struct s_stack
 {
-	int		value;
+	long long	value;
 	int		index;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;
-
-typedef struct s_check_arg
-{
-	char	*str;
-	int		flag;
-	double	disorder;
-	int 	bench;
-}	t_check_arg;
-
 
 typedef struct s_counts
 {
@@ -53,17 +46,18 @@ typedef struct s_counts
 	int	total;
 }	t_counts;
 
-void    push_swap(t_counts **ops, char **argv, int start, int strategy);
+double    push_swap(char **argv, t_counts **ops, int start, int strategy);
 
 int		build_stack(t_stack **a, char **argv, int start);
 char    **join_and_split(char **argv, int start);
-t_stack *ft_lstnew_addlast(t_stack **lst, t_stack *last, int value);
+t_stack *ft_lstnew_addlast(t_stack **lst, t_stack *last, long long value);
 
 void    assign_index(t_stack **stack);
 void	free_stack(t_stack **stack);
 void    check_stack(t_stack **stack);
 double  compute_disorder(t_stack **stack);
 void    create_ops(t_counts **ops);
+void    print_bench(double disorder, int strategy, t_counts *ops);
 
 t_stack *pop_top(t_stack **stack);
 void    push_ontop(t_stack **stack, t_stack *node);
@@ -71,6 +65,9 @@ void    push_ontop(t_stack **stack, t_stack *node);
 void	sort_little(t_stack **a, t_counts **ops, int size);
 void    sort_simple(t_stack **a, t_stack **b, t_counts **ops, int size);
 void    sort_three(t_stack **a, t_counts **ops);
+void    sort_medium(t_stack **a, t_stack **b, t_counts **ops, int size);
+
+int     in_first_half(t_stack **a, int idx, int size);
 
 void    ft_sa(t_stack **a, t_counts **ops, int ss);
 void    ft_sb(t_stack **b, t_counts **ops, int ss);
@@ -85,5 +82,4 @@ void    ft_rrb(t_stack **b, t_counts **ops, int rrr);
 void    ft_rrr(t_stack **a, t_stack **b, t_counts **ops);
 
 void    print_stack(t_stack **a);
-t_check_arg	*check_arg(char **argv, int argc);
 #endif

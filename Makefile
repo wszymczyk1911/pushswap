@@ -7,9 +7,8 @@ PRINTF_DIR = ft_printf
 PRINTF = $(PRINTF_DIR)/ft_printf
 
 SRCS = srcs/main.c srcs/build_stack.c srcs/errors.c srcs/push_swap_utils.c \
-	srcs/operations.c srcs/sort_simple.c srcs/stack_operations.c \
-	srcs/operations2.c srcs/operations3.c  \
-	srcs/check_arg.c
+	srcs/operations.c srcs/new_sort_simple.c srcs/stack_operations.c \
+	srcs/operations2.c srcs/operations3.c srcs/sort_medium.c
 
 OBJS = $(SRCS:.c=.o)
 

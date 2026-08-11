@@ -26,7 +26,7 @@ char    **join_and_split(char **argv, int start)
         return (arr);
 }
 
-t_stack *ft_lstnew_addlast(t_stack **lst, t_stack *last, int value)
+t_stack *ft_lstnew_addlast(t_stack **lst, t_stack *last, long long value)
 {
         t_stack *new_node;
 

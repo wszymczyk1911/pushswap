@@ -6,7 +6,7 @@
 /*   By: wikszymc <wikszymc@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 10:16:04 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/02 12:50:16 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/04 16:28:26 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ static int	ft_check_format(char format, va_list ap)
 		count += ft_putnbr(va_arg(ap, unsigned int));
 	else if (format == 'x' || format == 'X')
 		count += ft_putnbr_hex(va_arg(ap, int), format);
+	else if (format == 'f')
+		count += ft_putdouble(va_arg(ap, double));
+	else if (format == 'l')
+		count += ft_putnbr(va_arg(ap, long long));
 	else if (format == '%')
-		count += write(1, "%", 1);
+		count += write(2, "%", 1);
 	return (count);
 }
 
@@ -48,7 +52,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%' && str[i + 1] != '\0')
 			count += ft_check_format(str[++i], ap);
 		else if (str[i] != '%')
-			count += write(1, &str[i], 1);
+			count += write(2, &str[i], 1);
 		i++;
 	}
 	va_end(ap);
@@ -101,4 +105,4 @@ int	main(void)
 	printf("og_count = %d\n", og_count);
 	printf("\n");
 	return (0);
-}*/
+*/

@@ -6,12 +6,13 @@
 /*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 17:10:45 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/03 13:49:43 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/04 16:24:29 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
+#include "libft.h"
 
 void	ft_rra(t_stack **a, t_counts **ops, int rrr)
 {
@@ -25,7 +26,7 @@ void	ft_rra(t_stack **a, t_counts **ops, int rrr)
 	push_ontop(a, current);
 	if (rrr == 0)
 	{
-		ft_printf("rra\n");
+		ft_putstr_fd("rra\n", 1);
 		(*ops)->rra += 1;
 		(*ops)->total += 1;
 	}
@@ -43,7 +44,7 @@ void	ft_rrb(t_stack **b, t_counts **ops, int rrr)
 	push_ontop(b, current);
 	if (rrr == 0)
 	{
-		ft_printf("rrb\n");
+		ft_putstr_fd("rrb\n", 1);
 		(*ops)->rrb += 1;
 		(*ops)->total += 1;
 	}
@@ -53,7 +54,7 @@ void 	ft_rrr(t_stack **a, t_stack **b, t_counts **ops)
 {
 	ft_rra(a, ops, 1);
 	ft_rrb(b, ops, 1);
-	ft_printf("rrr\n");
+	ft_putstr_fd("rrr\n", 1);
 	(*ops)->rrr += 1;
 	(*ops)->total += 1;
 }
