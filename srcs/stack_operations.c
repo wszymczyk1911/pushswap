@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 15:03:01 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/07 16:48:58 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/16 14:37:17 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ static int	find_biggest(t_stack **stack)
 	}
 	return (target_idx);
 }
-#include <stdio.h>
+
 void	sort_three(t_stack **a, t_counts **ops)
 {
 	t_stack	*current;
-	int	idx;
-	(void)ops;
+	int		idx;
 
+	(void)ops;
 	current = *a;
 	idx = find_biggest(a);
 	if (current->index == idx)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 07:19:04 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/04 16:31:16 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/16 14:33:48 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,17 @@ void	create_ops(t_counts **ops)
 	if (!node)
 		return ;
 	node->sa = 0;
-        node->sb = 0;
-        node->ss = 0;
-        node->pa = 0;
-        node->pb = 0;
-        node->ra = 0;
-        node->rb = 0;
-        node->rr = 0;
-        node->rra = 0;
-        node->rrb = 0;
-        node->rrr = 0;
-        node->total = 0;
+	node->sb = 0;
+	node->ss = 0;
+	node->pa = 0;
+	node->pb = 0;
+	node->ra = 0;
+	node->rb = 0;
+	node->rr = 0;
+	node->rra = 0;
+	node->rrb = 0;
+	node->rrr = 0;
+	node->total = 0;
 	*ops = node;
 }
 
@@ -122,7 +122,7 @@ void	print_bench(double disorder, int strategy, t_counts *ops)
 		ft_printf("Complex / O(n log n)\n");
 	ft_printf("[bench] total_ops:	%d\n", ops->total);
 	ft_printf("[bench] sa:   %d   sb:   %d   ss:   %d   pa:   %d   pb:   %d\n",
-			ops->sa, ops->sb, ops->ss, ops->pa, ops->pb);
+		ops->sa, ops->sb, ops->ss, ops->pa, ops->pb);
 	ft_printf("[bench] ra:   %d   rb:   %d   rr:   %d   rra:   %d   rrb:   %d   rrr:   %d\n",
-			ops->ra, ops->rb, ops->rr, ops->rra, ops->rrb, ops->rrr);
+		ops->ra, ops->rb, ops->rr, ops->rra, ops->rrb, ops->rrr);
 }

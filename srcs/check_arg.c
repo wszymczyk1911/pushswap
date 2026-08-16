@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/04 13:28:33 by djuja             #+#    #+#             */
-/*   Updated: 2026/08/11 17:39:38 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/16 14:30:42 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 #include "libft.h"
 #include <stdio.h>
 
-int check_invalid_arg(char *argv)
+int	check_invalid_arg(char *argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(argv[i])
+	while (argv[i])
 	{
-		if ((argv[i] >= '0' && argv[i] <= '9') || argv[i] == '-' || argv[i] == ' ')
+		if ((argv[i] >= '0' && argv[i] <= '9')
+			|| argv[i] == '-' || argv[i] == ' ')
 			i++;
 		else
 			return (0);
@@ -29,33 +30,67 @@ int check_invalid_arg(char *argv)
 	return (1);
 }
 
-t_check_arg *make_string_of_numbers(char *argv, t_check_arg *conditions)
+t_check_arg	*make_string_of_numbers(char *argv, t_check_arg *conditions)
 {
-	char *sep;
-	char *str;
+	char	*sep;
+	char	*str;
 
 	str = NULL;
 	sep = ft_strdup(" ");
 	if (check_invalid_arg(argv) == 0)
 	{
-			ft_putstr_fd("Error\n", 2);
-			free(conditions);
-			exit (1);
+		ft_putstr_fd("Error\n", 2);
+		free(conditions);
+		exit (1);
 	}
 	else
-	{	
+	{
 		conditions->str = ft_strjoin(conditions->str, sep);
 		conditions->str = ft_strjoin(conditions->str, argv);
 	}
-	return(conditions);
+	return (conditions);
 }
 
+void	put_error(t_check_arg *conditions)
+{
+	ft_putstr_fd("Error\n", 2);
+	free(conditions);
+	exit (1);
+}
+
+int	check_for_flag(char *argv, t_check_arg *conditions, int *number_of_flags)
+{
+	if (ft_strncmp(argv, "--simple", ft_strlen(argv)) == 0)
+	{
+		conditions->strategy = SIMPLE;
+		*number_of_flags += 1;
+		return (1);
+	}
+	else if (ft_strncmp(argv, "--medium", ft_strlen(argv)) == 0)
+	{
+		conditions->strategy = MEDIUM;
+		*number_of_flags += 1;
+		return (1);
+	}
+	else if (ft_strncmp(argv, "--complex", ft_strlen(argv)) == 0)
+	{
+		conditions->strategy = COMPLEX;
+		*number_of_flags += 1;
+		return (1);
+	}
+	else if (ft_strncmp(argv, "--bench", ft_strlen(argv)) == 0)
+	{
+		conditions->bench = 1;
+		return (1);
+	}
+	return (0);
+}
 
 t_check_arg	*check_arg(char **argv, int argc)
 {
-	t_check_arg *conditions;
-	int i;
-	int number_of_flags;
+	t_check_arg	*conditions;
+	int			i;
+	int			number_of_flags;
 
 	conditions = malloc(sizeof(t_check_arg));
 	if (conditions == NULL)
@@ -67,43 +102,13 @@ t_check_arg	*check_arg(char **argv, int argc)
 	conditions->str = NULL;
 	while (i < argc)
 	{
-		if (ft_strncmp(argv[i], "--simple", ft_strlen(argv[i])) == 0)
-		{
-			conditions->strategy = SIMPLE;
-			number_of_flags++;
-		//	printf("conditions: %d\n", conditions->flag);
-		}
-		else if (ft_strncmp(argv[i], "--medium", ft_strlen(argv[i])) == 0)
-		{
-			conditions->strategy = MEDIUM;
-			number_of_flags++;
-		//	printf("conditions: %d\n", conditions->flag);
-		}
-		else if (ft_strncmp(argv[i], "--complex", ft_strlen(argv[i])) == 0)
-		{
-			conditions->strategy = COMPLEX;
-			number_of_flags++;
-		//	printf("conditions: %d\n", conditions->flag);
-		}
-		else if (ft_strncmp(argv[i], "--bench", ft_strlen(argv[i])) == 0)
-		{
-			conditions->bench = 1;
-		}
+		if (check_for_flag(argv[i], conditions, &number_of_flags));
 		else if (make_string_of_numbers(argv[i], conditions));
 		else
-		{
-			ft_putstr_fd("Error\n", 2);
-			free(conditions);
-			exit (1);
-		}
+			put_error(conditions);
 		i++;
 	}
 	if (number_of_flags > 1)
-		{
-			ft_putstr_fd("Error\n", 2);
-			free(conditions);
-			exit (1);
-		}
+		put_error(conditions);
 	return (conditions);
 }
-

@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 07:36:25 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/14 19:59:42 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/16 14:31:24 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	print_stack(t_stack **a)
 {
-	t_stack *current = *a;
+	t_stack	*current = *a;
 
 	while (current != NULL)
 	{
@@ -43,13 +43,13 @@ double	push_swap(t_counts **ops, t_check_arg **input)
 	if (size <= 1)
 		return (0);
 	if ((*input)->strategy == 1)
-		test_sort_simple(&a, &b, ops, size);
+		sort_simple(&a, &b, ops, size);
 	else if ((*input)->strategy == 2)
 		sort_medium(&a, &b, ops, size);
-//	else if (strategy == 3)
-//		sort_complex(&a, &b, ops, size);
-//	else if (strategy == 0)
-//		sort_adaptive();
+	else if ((*input)->strategy == 3)
+		sort_complex(&a, &b, ops, size);
+	else if ((*input)->strategy == 0)
+		sort_adaptive(&a, &b, ops, size, disorder);
 	free_stack(&a);
 	return (disorder);
 }
@@ -57,8 +57,8 @@ double	push_swap(t_counts **ops, t_check_arg **input)
 int	main(int argc, char **argv)
 {
 	t_counts	*ops;
-	t_check_arg *input;
-	double	disorder;
+	t_check_arg	*input;
+	double		disorder;
 
 	if (argc == 1)
 		return (0);

@@ -3,8 +3,8 @@
 
 int	in_first_half(t_stack **stack, int idx, int size)
 {
-	t_stack *current;
-	int	i;
+	t_stack	*current;
+	int		i;
 
 	i = size / 2;
 	current = *stack;

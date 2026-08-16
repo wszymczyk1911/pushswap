@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 16:16:27 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/04 16:23:48 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/16 14:31:56 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void	ft_ra(t_stack **a, t_counts **ops, int rr)
 {
 	t_stack	*node;
-	t_stack *current;
+	t_stack	*current;
 
 	node = pop_top(a);
 	current = *a;
@@ -35,8 +35,8 @@ void	ft_ra(t_stack **a, t_counts **ops, int rr)
 
 void	ft_rb(t_stack **b, t_counts **ops, int rr)
 {
-	t_stack *node;
-	t_stack *current;
+	t_stack	*node;
+	t_stack	*current;
 
 	node = pop_top(b);
 	current = *b;

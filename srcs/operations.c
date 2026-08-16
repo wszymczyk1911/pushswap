@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 13:33:07 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/04 16:23:39 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/16 14:31:43 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	ft_sa(t_stack **a, t_counts **ops, int ss)
 
 void	ft_sb(t_stack **b, t_counts **ops, int ss)
 {
-	t_stack *first;
-	t_stack *second;
+	t_stack	*first;
+	t_stack	*second;
 
 	first = pop_top(b);
 	second = pop_top(b);
