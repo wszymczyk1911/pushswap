@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:15:45 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/04 14:36:26 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/19 13:56:10 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,18 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
+char			*get_next_line(int fd);
+unsigned int	str_len(char *str);
+char			*join_strings(char *tmp, char *buf, int *index, int ret_read);
+char			*ft_new_line(char *str);
+char			*cut_rest(char *str, unsigned int start, int *index);
+int				check_for_line(char *buf, int to_read);
 typedef struct s_list
 {
 	void			*content;
