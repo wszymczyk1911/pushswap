@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/16 14:24:23 by djuja             #+#    #+#             */
-/*   Updated: 2026/08/19 13:21:30 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/20 10:14:07 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,3 @@ int	build_stack(t_stack **a, t_check_arg **input)
 	free_words(arr, i);
 	return (size);
 }
-/*
-int	main()
-{
-	char	*argv[] = {"hello", "42", "1 2 3 4", NULL};
-	int start = 1;
-	t_stack *a;
-	
-	build_stack(&a, argv, start);
-	t_stack *current;
-	current = a;
-	while (current != NULL)
-	{
-		printf("%d\n", current->value);
-		current = current->next;
-	}
-}
-*/

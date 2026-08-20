@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/16 10:48:09 by djuja             #+#    #+#             */
-/*   Updated: 2026/08/16 14:05:20 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/20 10:35:28 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	sort_complex(t_stack **a, t_stack **b, t_counts **ops, int size)
 {
 	int	nb_bits;
 	int	bit;
-	int n;
+	int	n;
 
 	if (size <= 3)
 	{

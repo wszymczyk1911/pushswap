@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 07:36:25 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/16 14:31:24 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/20 15:41:17 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	print_stack(t_stack **a)
 		ft_printf("[%d]: %l\n", current->index, current->value);
 		current = current->next;
 	}
-//	ft_printf("disorder: %d", disorder);
 }
 
 double	push_swap(t_counts **ops, t_check_arg **input)
@@ -49,7 +48,7 @@ double	push_swap(t_counts **ops, t_check_arg **input)
 	else if ((*input)->strategy == 3)
 		sort_complex(&a, &b, ops, size);
 	else if ((*input)->strategy == 0)
-		sort_adaptive(&a, &b, ops, size, disorder);
+		sort_adaptive(&a, &b, ops, size);
 	free_stack(&a);
 	return (disorder);
 }

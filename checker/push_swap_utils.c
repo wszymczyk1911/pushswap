@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 07:19:04 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/19 13:20:57 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/20 10:16:47 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,3 @@ double	compute_disorder(t_stack **stack)
 	}
 	return (mistakes / total_pairs);
 }
-

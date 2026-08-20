@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 16:16:27 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/19 15:20:44 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/20 10:19:37 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_ra(t_stack **a)
 	while (current->next != NULL)
 		current = current->next;
 	current->next = node;
-	node->prev = current;	
+	node->prev = current;
 }
 
 void	ft_rb(t_stack **b)

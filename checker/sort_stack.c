@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/20 10:17:00 by djuja             #+#    #+#             */
+/*   Updated: 2026/08/20 10:18:59 by djuja            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "checker.h"
 #include "libft.h"
 
 #include <stdio.h>
 
-void put_err(t_stack **a, t_stack **b)
+void	put_err(t_stack **a, t_stack **b)
 {
 	ft_putstr_fd("3 Error\n", 2);
 	free_stack(a);
@@ -12,7 +23,7 @@ void put_err(t_stack **a, t_stack **b)
 	exit(1);
 }
 
-void compare_paramets(t_stack **a, t_stack **b, char *line)
+void	compare_paramets(t_stack **a, t_stack **b, char *line)
 {
 	if (ft_strncmp(line, "sa\n", 10) == 0)
 		ft_sa(a);
@@ -40,9 +51,9 @@ void compare_paramets(t_stack **a, t_stack **b, char *line)
 		put_err(a, b);
 }
 
-void sort_stack(t_stack **a, t_stack **b)
+void	sort_stack(t_stack **a, t_stack **b)
 {
-	char *line;
+	char	*line;
 
 	line = get_next_line(0);
 	while (line)

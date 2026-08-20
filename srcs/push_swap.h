@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:00:49 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/16 14:36:23 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/20 10:56:13 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void		ft_rrb(t_stack **b, t_counts **ops, int rrr);
 void		ft_rrr(t_stack **a, t_stack **b, t_counts **ops);
 
 void		print_stack(t_stack **a);
-void		test_sort_simple(t_stack **a, t_stack **b, t_counts **ops, int size);
 void		sort_complex(t_stack **a, t_stack **b, t_counts **ops, int size);
-void		sort_adaptive(t_stack **a, t_stack **b, t_counts **ops, int size, double disorder);
+void		sort_adaptive(t_stack **a, t_stack **b, t_counts **ops, int size);
 #endif

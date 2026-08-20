@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 15:03:01 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/19 15:44:48 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/20 10:17:30 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,3 @@ void	push_ontop(t_stack **stack, t_stack *node)
 	}
 	*stack = node;
 }
-
-
-
-

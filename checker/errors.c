@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/01 14:04:29 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/19 13:21:17 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/20 10:15:36 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	check_stack2(t_stack **stack)
 	current = *stack;
 	while (current != NULL)
 	{
-//if >=48 && <= 57 sprawdzic jak jest jeszcze str, check_flags()
 		if (current->value > INT_MAX || current->value < INT_MIN)
 		{
 			ft_putstr_fd("3 Error\n", 2);
