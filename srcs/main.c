@@ -6,14 +6,14 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 07:36:25 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/20 15:41:17 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/21 21:04:02 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
 #include "libft.h"
-
+/*
 void	print_stack(t_stack **a)
 {
 	t_stack	*current = *a;
@@ -24,7 +24,7 @@ void	print_stack(t_stack **a)
 		current = current->next;
 	}
 }
-
+*/
 double	push_swap(t_counts **ops, t_check_arg **input)
 {
 	t_stack	*a;
@@ -66,5 +66,6 @@ int	main(int argc, char **argv)
 	disorder = push_swap(&ops, &input);
 	if (input->bench == 1)
 		print_bench(disorder, input->strategy, ops);
-//	free_counts(&ops);
+	free(ops);
+	free(input);
 }

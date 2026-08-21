@@ -1,0 +1,4 @@
+-> mozna znaczek pierwiastka wydrukowac? trzeba zmienic jak cos
+-> sprawdzic rozne errory
+-> sort na 5
+-> 

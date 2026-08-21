@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 15:03:01 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/16 14:37:17 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/21 21:02:09 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	push_ontop(t_stack **stack, t_stack *node)
 
 static int	find_biggest(t_stack **stack)
 {
-	int	target_idx;
+	int		target_idx;
 	t_stack	*current;
 
 	target_idx = 0;

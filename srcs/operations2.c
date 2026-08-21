@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 16:16:27 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/16 14:31:56 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/21 20:57:59 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_ra(t_stack **a, t_counts **ops, int rr)
 	while (current->next != NULL)
 		current = current->next;
 	current->next = node;
-	node->prev = current;	
+	node->prev = current;
 	if (rr == 0)
 	{
 		ft_putstr_fd("ra\n", 1);

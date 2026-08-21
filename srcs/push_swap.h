@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:00:49 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/20 10:56:13 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/21 21:10:36 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void		ft_rr(t_stack **a, t_stack **b, t_counts **ops);
 void		ft_rra(t_stack **a, t_counts **ops, int rrr);
 void		ft_rrb(t_stack **b, t_counts **ops, int rrr);
 void		ft_rrr(t_stack **a, t_stack **b, t_counts **ops);
-
+void		push_chunks_to_b(t_stack **a, t_stack **b, t_counts **ops, int size);
 void		print_stack(t_stack **a);
 void		sort_complex(t_stack **a, t_stack **b, t_counts **ops, int size);
 void		sort_adaptive(t_stack **a, t_stack **b, t_counts **ops, int size);

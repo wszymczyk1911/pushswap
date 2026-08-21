@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/16 12:51:32 by djuja             #+#    #+#             */
-/*   Updated: 2026/08/20 10:56:46 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/21 21:03:16 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ void	sort_adaptive(t_stack **a, t_stack **b, t_counts **ops, int size)
 		sort_medium(a, b, ops, size);
 	else if (disorder > 0.5)
 		sort_complex(a, b, ops, size);
-	return ;
 }

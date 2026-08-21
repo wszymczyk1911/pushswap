@@ -6,7 +6,7 @@
 /*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 22:23:21 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/07/08 22:23:25 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/21 21:07:43 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	joined[len1 + len2] = '\0';
-	return (joined);
+	return (free((char *)s1), joined);
 }

@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/04 13:28:33 by djuja             #+#    #+#             */
-/*   Updated: 2026/08/20 15:20:45 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/21 21:07:20 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ int	check_invalid_arg(char *argv, t_check_arg *conditions)
 t_check_arg	*make_string_of_numbers(char *argv, t_check_arg *conditions)
 {
 	char	*sep;
-	char	*str;
+	char	*tmp;
 
-	str = NULL;
+	tmp = NULL;
 	sep = ft_strdup(" ");
 	if (check_invalid_arg(argv, conditions) == 0)
 	{
@@ -64,10 +64,11 @@ t_check_arg	*make_string_of_numbers(char *argv, t_check_arg *conditions)
 		return (conditions);
 	else
 	{
-		conditions->str = ft_strjoin(conditions->str, sep);
-		conditions->str = ft_strjoin(conditions->str, argv);
+		tmp = conditions->str;
+		tmp = ft_strjoin(tmp, sep);
+		conditions->str = ft_strjoin(tmp, argv);
 	}
-	return (conditions);
+	return (free(sep), conditions);
 }
 
 int	check_for_flag(char *argv, t_check_arg *conditions, int *number_of_flags)
