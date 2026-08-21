@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_utils2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wikszymc <wikszymc@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/27 10:16:36 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/04 14:41:34 by wikszymc         ###   ########.fr       */
+/*   Created: 2026/08/04 14:38:11 by wikszymc          #+#    #+#             */
+/*   Updated: 2026/08/04 15:02:03 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	ft_putdouble(double nb)
+{
+	int	count;
+	int	number1;
+	int	number2;
 
-int		ft_printf(const char *str, ...);
-int		ft_putchar(int c);
-int		ft_putstr(char *str);
-int		ft_putptr(void *ptr);
-int		ft_putnbr(long long n);
-int		ft_putnbr_hex(unsigned long long n, char format);
-int		ft_putdouble(double nb);
-#endif
+	count = 0;
+	number1 = nb * 10;
+	number2 = nb * 100;
+	count = ft_putnbr((long long)nb);
+	count = ft_putchar('.');
+	count = ft_putnbr((long long)number1 % 10);
+	count = ft_putnbr((long long)number2 % 10);
+	return (count);
+}

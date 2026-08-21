@@ -6,7 +6,7 @@
 /*   By: wikszymc <wikszymc@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 10:33:57 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/03 13:52:41 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/04 16:20:12 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_putchar(int c)
 	int	count;
 
 	count = 0;
-	count = write(1, &c, 1);
+	count = write(2, &c, 1);
 	return (count);
 }
 
