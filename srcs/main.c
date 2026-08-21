@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 07:36:25 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/21 21:04:02 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/21 21:23:43 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ double	push_swap(t_counts **ops, t_check_arg **input)
 	check_stack(&a);
 	assign_index(&a);
 	disorder = compute_disorder(&a);
-	if (size <= 1)
+	if (size <= 1 || disorder == 0)
 		return (0);
 	if ((*input)->strategy == 1)
 		sort_simple(&a, &b, ops, size);
