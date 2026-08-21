@@ -6,33 +6,34 @@
 /*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 22:08:45 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/07/08 22:08:47 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/04 14:34:37 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
+#include <stdio.h>
 
-int	ft_atoi(const char *nptr)
+long long	ft_atoi(const char *nptr)
 {
-	int		i;
-	int		sign;
-	long	result;
+	long long	sign;
+	long long	result;
 
-	i = 0;
 	sign = 1;
 	result = 0;
-	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '+' || nptr[i] == '-')
+	while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
+		nptr++;
+	if (*nptr == '+' || *nptr == '-')
 	{
-		if (nptr[i] == '-')
+		if (*nptr == '-')
 			sign = -1;
-		i++;
+		nptr++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while (*nptr >= '0' && *nptr <= '9')
 	{
-		result = result * 10 + (nptr[i] - '0');
-		i++;
+		result = result * 10 + (*nptr - '0');
+		nptr++;
 	}
-	return ((int)(result * sign));
+	result = result * sign;
+	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 15:08:57 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/07/08 21:32:39 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/04 12:15:58 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isascii(int c)
 {
-	if (c >= 0 || c <= 127)
+	if (c >= 0 && c <= 127)
 		return (1);
 	return (0);
 }
