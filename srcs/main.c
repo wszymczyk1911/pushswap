@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 07:36:25 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/03 16:54:28 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/20 15:41:17 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,70 +16,55 @@
 
 void	print_stack(t_stack **a)
 {
-	t_stack *current = *a;
+	t_stack	*current = *a;
 
 	while (current != NULL)
 	{
-		ft_printf("[%d]: %d\n", current->index, current->value);
+		ft_printf("[%d]: %l\n", current->index, current->value);
 		current = current->next;
 	}
-//	ft_printf("disorder: %d", disorder);
 }
 
-void	push_swap(t_counts **ops, char **argv, int start, int strategy)
+double	push_swap(t_counts **ops, t_check_arg **input)
 {
 	t_stack	*a;
 	t_stack	*b;
-	int		size;
 	double	disorder;
+	int		size;
 
-	size = build_stack(&a, argv, start);
+	size = build_stack(&a, input);
 	if (!a)
-		return ;
+		return (0);
 	b = NULL;
-//	check_stack(&a);
+	check_stack(&a);
 	assign_index(&a);
 	disorder = compute_disorder(&a);
-//        print_stack(&a);
 	if (size <= 1)
-		return ;
-	if (strategy == 1 || (strategy == 0 && disorder < 0.2))
+		return (0);
+	if ((*input)->strategy == 1)
 		sort_simple(&a, &b, ops, size);
-//	else if (strategy == 2 || (strategy == 0
-//			&& disorder >= 0.2 && disorder <= 0.5))
-//		sort_medium();
-//	else if (strategy == 3 || (strategy == 0 && disorder > 0.5))
-//		sort_complex();
-//	print_stack(&a);
+	else if ((*input)->strategy == 2)
+		sort_medium(&a, &b, ops, size);
+	else if ((*input)->strategy == 3)
+		sort_complex(&a, &b, ops, size);
+	else if ((*input)->strategy == 0)
+		sort_adaptive(&a, &b, ops, size);
 	free_stack(&a);
+	return (disorder);
 }
 
 int	main(int argc, char **argv)
 {
 	t_counts	*ops;
-	int			start;
-	int			strategy;
-//	int			bench;
+	t_check_arg	*input;
+	double		disorder;
 
 	if (argc == 1)
 		return (0);
-	strategy = 1;
-//	bench = 0;
-	start = 1;
-//	start = check_flags(argv, &strategy, &bench);
+	input = check_arg(argv, argc);
 	create_ops(&ops);
-	if (!ops)
-		return (0);
-	push_swap(&ops, argv, start, strategy);
-//	if (bench == 1)
-//		print_bench();
+	disorder = push_swap(&ops, &input);
+	if (input->bench == 1)
+		print_bench(disorder, input->strategy, ops);
 //	free_counts(&ops);
-	return (0);
 }
-
-//check_flags -> it should return index at which numbers start argv[index]
-//sort_simple
-//sort_medium
-//sort_complex
-//free_counts
-//print_bench
