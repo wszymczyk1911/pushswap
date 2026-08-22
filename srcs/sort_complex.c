@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/16 10:48:09 by djuja             #+#    #+#             */
-/*   Updated: 2026/08/20 10:35:28 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/22 12:37:37 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	sort_complex(t_stack **a, t_stack **b, t_counts **ops, int size)
 	int	bit;
 	int	n;
 
-	if (size <= 3)
+	if (size <= 5)
 	{
-		sort_little(a, ops, size);
+		sort_five(a, b, ops, size);
 		return ;
 	}
 	nb_bits = number_of_bits(size);

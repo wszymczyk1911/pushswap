@@ -6,7 +6,7 @@
 /*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 11:59:21 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/21 21:10:10 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/22 12:10:27 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void	sort_medium(t_stack **a, t_stack **b, t_counts **ops, int size)
 {
 	int	n;
 
-	if (size <= 3)
+	if (size <= 5)
 	{
-		sort_little(a, ops, size);
+		sort_five(a, b, ops, size);
 		return ;
 	}
 	push_chunks_to_b(a, b, ops, size);

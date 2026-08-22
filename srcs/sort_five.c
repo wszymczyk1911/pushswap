@@ -1,45 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_simple.c                                      :+:      :+:    :+:   */
+/*   sort_five.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wikszymc <wikszymc@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: wikszymc <wikszymc@student.42warsaw.p      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/21 21:03:24 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/22 12:30:57 by wikszymc         ###   ########.fr       */
+/*   Created: 2026/08/22 12:10:33 by wikszymc          #+#    #+#             */
+/*   Updated: 2026/08/22 12:26:32 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
 
-int	in_first_half(t_stack **stack, int idx, int size)
-{
-	t_stack	*current;
-	int		i;
-
-	i = size / 2;
-	current = *stack;
-	while (current != NULL && i >= 0)
-	{
-		if (current->index == idx)
-			return (1);
-		current = current->next;
-		i--;
-	}
-	return (0);
-}
-
-void	sort_simple(t_stack **a, t_stack **b, t_counts **ops, int size)
+void	sort_five(t_stack **a, t_stack **b, t_counts **ops, int size)
 {
 	int	i;
 
 	i = 0;
-	if (size <= 5)
-	{
-		sort_five(a, b, ops, size);
-		return ;
-	}
 	while (size > 3)
 	{
 		while ((*a)->index != i)
@@ -49,11 +26,12 @@ void	sort_simple(t_stack **a, t_stack **b, t_counts **ops, int size)
 			else
 				ft_rra(a, ops, 0);
 		}
-		ft_pb(a, b, ops);
-		size--;
+		if ((*a)->index == i)
+			ft_pb(a, b, ops);
 		i++;
+		size--;
 	}
-	sort_three(a, ops);
+	sort_little(a, ops, size);
 	while (*b != NULL)
 		ft_pa(a, b, ops);
 }

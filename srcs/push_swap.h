@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:00:49 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/21 21:10:36 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/22 14:21:11 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_stack		*ft_lstnew_addlast(t_stack **lst, t_stack *last, long long value);
 
 void		assign_index(t_stack **stack);
 void		free_stack(t_stack **stack);
-void		check_stack(t_stack **stack);
+void		check_stack(t_stack **stack, t_counts **ops, t_check_arg **input);
 double		compute_disorder(t_stack **stack);
 void		create_ops(t_counts **ops);
 void		print_bench(double disorder, int strategy, t_counts *ops);
@@ -76,7 +76,7 @@ void		sort_three(t_stack **a, t_counts **ops);
 void		sort_medium(t_stack **a, t_stack **b, t_counts **ops, int size);
 
 int			in_first_half(t_stack **a, int idx, int size);
-
+void		sort_five(t_stack **a, t_stack **b, t_counts **ops, int size);
 void		ft_sa(t_stack **a, t_counts **ops, int ss);
 void		ft_sb(t_stack **b, t_counts **ops, int ss);
 void		ft_ss(t_stack **a, t_stack **b, t_counts **ops);
@@ -88,7 +88,8 @@ void		ft_rr(t_stack **a, t_stack **b, t_counts **ops);
 void		ft_rra(t_stack **a, t_counts **ops, int rrr);
 void		ft_rrb(t_stack **b, t_counts **ops, int rrr);
 void		ft_rrr(t_stack **a, t_stack **b, t_counts **ops);
-void		push_chunks_to_b(t_stack **a, t_stack **b, t_counts **ops, int size);
+void		push_chunks_to_b(t_stack **a, t_stack **b, t_counts **ops,
+				int size);
 void		print_stack(t_stack **a);
 void		sort_complex(t_stack **a, t_stack **b, t_counts **ops, int size);
 void		sort_adaptive(t_stack **a, t_stack **b, t_counts **ops, int size);

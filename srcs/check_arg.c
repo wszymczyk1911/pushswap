@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/04 13:28:33 by djuja             #+#    #+#             */
-/*   Updated: 2026/08/21 21:07:20 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/22 14:56:30 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,22 @@
 #include "libft.h"
 #include <stdio.h>
 
-void	put_error(t_check_arg *conditions)
+static void	put_error(t_check_arg *conditions, char *sep)
 {
 	ft_putstr_fd("Error\n", 2);
+	if (sep != NULL)
+		free(sep);
 	free(conditions);
 	exit (1);
 }
 
-int	check_invalid_arg(char *argv, t_check_arg *conditions)
+static int	check_invalid_arg(char *argv, t_check_arg *conditions, char *sep)
 {
 	int	i;
 
 	i = 0;
 	if (argv == NULL || argv[i] == '\0')
-		put_error(conditions);
+		put_error(conditions, sep);
 	while (argv[i] == ' ')
 		i++;
 	if (argv[i] == '\0')
@@ -47,21 +49,24 @@ int	check_invalid_arg(char *argv, t_check_arg *conditions)
 	return (1);
 }
 
-t_check_arg	*make_string_of_numbers(char *argv, t_check_arg *conditions)
+static t_check_arg	*make_string_of_numbers(char *argv, t_check_arg *conditions)
 {
 	char	*sep;
 	char	*tmp;
 
 	tmp = NULL;
 	sep = ft_strdup(" ");
-	if (check_invalid_arg(argv, conditions) == 0)
+	if (!sep)
+		return (NULL);
+	if (check_invalid_arg(argv, conditions, sep) == 0)
 	{
 		ft_putstr_fd("Error\n", 2);
 		free(conditions);
+		free(sep);
 		exit (1);
 	}
 	else if (argv[0] == '\0')
-		return (conditions);
+		return (free(sep), conditions);
 	else
 	{
 		tmp = conditions->str;
@@ -71,7 +76,7 @@ t_check_arg	*make_string_of_numbers(char *argv, t_check_arg *conditions)
 	return (free(sep), conditions);
 }
 
-int	check_for_flag(char *argv, t_check_arg *conditions, int *number_of_flags)
+static int	check_for_flag(char *argv, t_check_arg *conditions, int *number_of_flags)
 {
 	if (ft_strncmp(argv, "--simple", 9) == 0)
 	{
@@ -117,10 +122,10 @@ t_check_arg	*check_arg(char **argv, int argc)
 	{
 		if (!check_for_flag(argv[i], conditions, &number_of_flags)
 			&& !make_string_of_numbers(argv[i], conditions))
-			put_error(conditions);
+			put_error(conditions, NULL);
 		i++;
 	}
 	if (number_of_flags > 1)
-		put_error(conditions);
+		put_error(conditions, NULL);
 	return (conditions);
 }
