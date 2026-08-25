@@ -1,6 +1,0 @@
--> mozna znaczek pierwiastka wydrukowac? trzeba zmienic jak cos
--> sprawdzic rozne errory
--> sort na 5 // dziala normalnie zwykly sort
--> valgrind na errorach?
--> readme
--> 
