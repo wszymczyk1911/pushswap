@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:00:49 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/20 10:15:08 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/25 13:19:35 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char		**join_and_split(t_check_arg **input);
 t_stack		*ft_lstnew_addlast(t_stack **lst, t_stack *last, long long value);
 
 void		free_stack(t_stack **stack);
-void		check_stack(t_stack **stack);
+void		check_stack(t_stack **stack, t_check_arg **input);
 double		compute_disorder(t_stack **stack);
 
 t_stack		*pop_top(t_stack **stack);

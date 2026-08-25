@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/04 13:28:33 by djuja             #+#    #+#             */
-/*   Updated: 2026/08/20 15:23:14 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/25 13:25:27 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 #include "libft.h"
 #include <stdio.h>
 
-void	put_error(t_check_arg *conditions)
+void	put_error(t_check_arg *conditions, char *sep)
 {
 	ft_putstr_fd("Error\n", 2);
+	if (sep != NULL)
+		free(sep);
 	free(conditions);
 	exit (1);
 }
@@ -27,7 +29,7 @@ int	check_invalid_arg(char *argv, t_check_arg *conditions)
 
 	i = 0;
 	if (argv == NULL || argv[i] == '\0')
-		put_error(conditions);
+		put_error(conditions, NULL);
 	while (argv[i] == ' ')
 		i++;
 	if (argv[i] == '\0')
@@ -50,22 +52,29 @@ int	check_invalid_arg(char *argv, t_check_arg *conditions)
 t_check_arg	*make_string_of_numbers(char *argv, t_check_arg *conditions)
 {
 	char	*sep;
-	char	*str;
+	char	*tmp;
 
-	str = NULL;
+	tmp = NULL;
 	sep = ft_strdup(" ");
+	if (!sep)
+		return (NULL);
 	if (check_invalid_arg(argv, conditions) == 0)
 	{
 		ft_putstr_fd("Error\n", 2);
+		free(conditions->str);
 		free(conditions);
+		free(sep);
 		exit (1);
 	}
+	else if (argv[0] == '\0')
+		return (free(sep), conditions);
 	else
 	{
-		conditions->str = ft_strjoin(conditions->str, sep);
-		conditions->str = ft_strjoin(conditions->str, argv);
+		tmp = conditions->str;
+		tmp = ft_strjoin(tmp, sep);
+		conditions->str = ft_strjoin(tmp, argv);
 	}
-	return (conditions);
+	return (free(sep), conditions);
 }
 
 int	check_for_flag(char *argv, t_check_arg *conditions, int *number_of_flags)
@@ -114,10 +123,10 @@ t_check_arg	*check_arg(char **argv, int argc)
 	{
 		if (!check_for_flag(argv[i], conditions, &number_of_flags)
 			&& !make_string_of_numbers(argv[i], conditions))
-			put_error(conditions);
+			put_error(conditions, NULL);
 		i++;
 	}
 	if (number_of_flags > 1)
-		put_error(conditions);
+		put_error(conditions, NULL);
 	return (conditions);
 }

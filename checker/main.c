@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/02 07:36:25 by wikszymc          #+#    #+#             */
-/*   Updated: 2026/08/20 10:16:00 by djuja            ###   ########.fr       */
+/*   Updated: 2026/08/25 13:18:51 by djuja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	push_swap(t_check_arg **input)
 	if (!a)
 		return ;
 	b = NULL;
-	check_stack(&a);
+	check_stack(&a, input);
 	sort_stack(&a, &b);
 	free_stack(&a);
 	free_stack(&b);
@@ -38,6 +38,10 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	input = check_arg(argv, argc);
+	if (input->str == NULL)
+		return (free(input), -1);
 	push_swap(&input);
+	free(input->str);
+	free(input);
 	return (0);
 }
