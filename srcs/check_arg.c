@@ -6,7 +6,7 @@
 /*   By: djuja <djuja@student.42warsaw.pl>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/04 13:28:33 by djuja             #+#    #+#             */
-/*   Updated: 2026/08/22 14:56:30 by wikszymc         ###   ########.fr       */
+/*   Updated: 2026/08/25 13:24:49 by wikszymc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	put_error(t_check_arg *conditions, char *sep)
 	ft_putstr_fd("Error\n", 2);
 	if (sep != NULL)
 		free(sep);
+	free(conditions->str);
 	free(conditions);
 	exit (1);
 }
@@ -61,6 +62,7 @@ static t_check_arg	*make_string_of_numbers(char *argv, t_check_arg *conditions)
 	if (check_invalid_arg(argv, conditions, sep) == 0)
 	{
 		ft_putstr_fd("Error\n", 2);
+		free(conditions->str);
 		free(conditions);
 		free(sep);
 		exit (1);
@@ -76,7 +78,7 @@ static t_check_arg	*make_string_of_numbers(char *argv, t_check_arg *conditions)
 	return (free(sep), conditions);
 }
 
-static int	check_for_flag(char *argv, t_check_arg *conditions, int *number_of_flags)
+int	check_for_flag(char *argv, t_check_arg *conditions, int *number_of_flags)
 {
 	if (ft_strncmp(argv, "--simple", 9) == 0)
 	{
